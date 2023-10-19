@@ -18,7 +18,6 @@ import java.io.Serializable;
 public class Game implements Serializable{ 
     @Id
     private int id;
-    private String photo;   //De momento la dejamos como si fuera un link al .png por ejemplo
     private String description;
     private String console;
     private boolean disponoble;
@@ -40,14 +39,6 @@ public class Game implements Serializable{
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
     }
 
     public String getDescription() {

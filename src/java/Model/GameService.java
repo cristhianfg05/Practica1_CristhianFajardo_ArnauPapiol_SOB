@@ -9,6 +9,7 @@ package Model;
  * @author crist
  */
 
+import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -19,11 +20,10 @@ public class GameService {
         this.em = em;
     }
     
-    public Game createGame(int id, String photo, String description, 
-            String console, float price, String title, String type, 
-            String storeAdress){
+    public Game createGame(int id, String description, String console, 
+            float price, String title, String type, String storeAdress){
+        if(findGame(id) != null){ 
         Game g = new Game(id);
-        g.setPhoto(photo);
         g.setDescription(description);
         g.setConsole(console);
         g.setPrice(price);
@@ -32,6 +32,31 @@ public class GameService {
         g.setStoreAdress(storeAdress);
         em.persist(g);
         return g;
-        
+        }
+        return null;
+    }
+    
+    public void deleteGame(int id){
+        Game g = findGame(id);
+        if(g != null){
+            em.remove(g);
+        }
+    }
+    
+    public Game changePrice(float newPrice, int id){
+        Game g = findGame(id);
+        if(g != null){
+            g.setPrice(newPrice);
+        }
+        return g;
+    }
+
+    public Game findGame(int id) {
+        return em.find(Game.class, id);
+    }
+    
+    public Collection<Game> findAllGamesAlphabeticalOrder(){
+        Query query = em.createQuery("SELECT e FROM Game e ORDER BY e.name ASC");
+        return (Collection<Game>) query.getResultList();
     }
 }
