@@ -96,7 +96,11 @@ public class Game implements Serializable{
     public void setStoreAdress(String storeAdress) {
         this.storeAdress = storeAdress;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Game{" + "id=" + id + ", description=" + description + ", console=" + console + ", disponoble=" + disponoble + ", price=" + price + ", title=" + title + ", type=" + type + ", storeAdress=" + storeAdress + '}';
+    }
     
             
 }
