@@ -106,11 +106,9 @@ public class EntityService {
     }
     
     
-    public Rent createRent(int id, int idGame, String dni, Date dayRent, Date returnDay, float totalPrice, boolean autenticat){
+    public Rent createRent(int id, Date dayRent, Date returnDay, float totalPrice, boolean autenticat){
         if(autenticat){
             Rent r = new Rent(id);
-            r.setIdGame(idGame);
-            r.setDni(dni);
             r.setDayRented(dayRent);
             r.setReturnDate(returnDay);
             r.setTotalPrice(totalPrice);

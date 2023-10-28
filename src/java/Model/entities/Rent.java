@@ -4,6 +4,12 @@
  */
 package model.entities;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -11,12 +17,23 @@ import java.util.Date;
  * @author crist
  */
 public class Rent {
+    private static final long serialVersion = 1L;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Rent_Gen")
+    @SequenceGenerator(name = "Rent_Gen", sequenceName = "Rent_Gen",initialValue = 1, allocationSize = 1)
     private int id;
-    private int idGame;
-    private String dni;
     private Date dayRented;     //Dia que se alquila el juego
     private float totalPrice;   //Precio de este alquiler
     private Date returnDate;    //Dia que tiene que devolver
+    
+    @ManyToOne
+    @NotNull
+    private Game game;
+
+    @ManyToOne
+    @NotNull
+    private User user;
 
     public Rent() {
     }
@@ -33,21 +50,6 @@ public class Rent {
         this.id = id;
     }
 
-    public int getIdGame() {
-        return idGame;
-    }
-
-    public void setIdGame(int idGame) {
-        this.idGame = idGame;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
 
     public Date getDayRented() {
         return dayRented;
@@ -73,9 +75,27 @@ public class Rent {
         this.returnDate = returnDate;
     }
 
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
+    
+
     @Override
     public String toString() {
-        return "Rent{" + "id=" + id + ", idGame=" + idGame + ", dni=" + dni + ", dayRented=" + dayRented + ", totalPrice=" + totalPrice + ", returnDate=" + returnDate + '}';
+        return "Rent{" + "id=" + id + ", dayRented=" + dayRented + ", totalPrice=" + totalPrice + ", returnDate=" + returnDate + '}';
     }
     
     

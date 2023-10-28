@@ -5,26 +5,41 @@
 package model.entities;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.io.Serializable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
+//import jakarta.validation.constraints.NotNull;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 
 /**
  *
- * @author crist
+ * @author Cristhian y Arnau
  */
 
 @Entity
+@XmlRootElement
 public class Game implements Serializable{ 
+    private static final long serialVersion = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Game_Gen")
+    @SequenceGenerator(name = "Game_Gen", sequenceName = "Game_Gen",initialValue = 1, allocationSize = 1)
+ 
     private int id;
     private String description;
     private String console;
-    private boolean disponoble;
+    private boolean disponible;
     private float price;
     private String title;
     private String type;
     private String storeAdress;
+    
+    @OneToMany(mappedBy = "game")
+    private List<Rent> rents;
 
     public Game() {
     }
@@ -55,14 +70,6 @@ public class Game implements Serializable{
 
     public void setConsole(String console) {
         this.console = console;
-    }
-
-    public boolean isDisponoble() {
-        return disponoble;
-    }
-
-    public void setDisponoble(boolean disponoble) {
-        this.disponoble = disponoble;
     }
 
     public float getPrice() {
@@ -97,9 +104,27 @@ public class Game implements Serializable{
         this.storeAdress = storeAdress;
     }
 
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+
+    public List<Rent> getRents() {
+        return rents;
+    }
+
+    public void setRents(List<Rent> rents) {
+        this.rents = rents;
+    }
+
+    
+    
     @Override
     public String toString() {
-        return "Game{" + "id=" + id + ", description=" + description + ", console=" + console + ", disponoble=" + disponoble + ", price=" + price + ", title=" + title + ", type=" + type + ", storeAdress=" + storeAdress + '}';
+        return "Game{" + "id=" + id + ", description=" + description + ", console=" + console + ", disponoble=" + disponible + ", price=" + price + ", title=" + title + ", type=" + type + ", storeAdress=" + storeAdress + '}';
     }
     
             
