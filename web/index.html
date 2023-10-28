@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
     <title>Tienda de Videojuegos</title>
 </head>
 <body>
@@ -23,37 +21,17 @@
     </nav>
 
     <main>
-        <section class="game">
-            <img src="game1.jpg" alt="Juego 1">
-            <h2>Juego 1</h2>
-            <p>Descubre una emocionante aventura en este juego épico.</p>
-            <button>Comprar - $49.99</button>
-        </section>
+        <button class="button-64" role="button">
+            <a href="createDB.jsp">Crear Base de datos</a>
+        </button>
         
-        <section class="game">
-            <img src="game2.jpg" alt="Juego 2">
-            <h2>Juego 2</h2>
-            <p>Explora mundos asombrosos y desafía a tus amigos en línea.</p>
-            <button>Comprar - $59.99</button>
-        </section>
+        <button class="button-64" role="button">
+            <a href="insertDB.jsp">Insertar datos</a>
+        </button>
         
-        <section class="game">
-            <img src="game3.jpg" alt="Juego 3">
-            <h2>Juego 3</h2>
-            <p>Domina tus habilidades y compite en torneos globales.</p>
-            <button>Comprar - $39.99</button>
-        </section>
-        
-        <!-- Botón para crear la base de datos -->
-        <div class="centered w3-row">
-            <a href="createDB.jsp"  class="w3-button w3-white w3-border w3-border-red w3-round-large w3-xlarge"> Crear base de datos </a>
-        </div>
-        
-        <div class="centered w3-row">
-            <a href="insertDB.jsp"  class="w3-button w3-white w3-border w3-border-red w3-round-large w3-xlarge"> Añadir elementos </a>
-        </div>
-        
-        
+        <button class="button-64" role="button">
+            <a href="showGames.jsp">Mostrar Juegos</a>
+        </button>
     </main>
 
     <footer>

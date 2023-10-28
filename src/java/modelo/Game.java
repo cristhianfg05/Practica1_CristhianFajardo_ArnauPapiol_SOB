@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model.entities;
+package modelo;
 
 
 import java.io.Serializable;
@@ -35,7 +35,7 @@ public class Game implements Serializable{
     private boolean disponible;
     private float price;
     private String title;
-    private String type;
+    private String type;        //Solo hay 9 generos
     private String storeAdress;
     
     @OneToMany(mappedBy = "game")

@@ -26,9 +26,9 @@
 
         /* Drop tables if they exist */
         String[] tableDropStatements = new String[]{
-            "DROP TABLE " + schema + ".GAME",
+            "DROP TABLE " + schema + ".RENT",
             "DROP TABLE " + schema + ".USERS",
-            "DROP TABLE " + schema + ".RENT"
+            "DROP TABLE " + schema + ".GAME"
         };
 
         for (String dropTableStatement : tableDropStatements) {
@@ -37,6 +37,7 @@
                 out.println("<pre>Dropped table: " + dropTableStatement + "</pre>");
             } catch (SQLException ex) {
                 // Ignore errors if the table doesn't exist
+                out.println("<pre>Drop failed " + ex+ "</pre>");
             }
         }
 
