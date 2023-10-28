@@ -14,6 +14,7 @@ import jakarta.json.JsonObject;
 import jakarta.persistence.PersistenceContext;
 import jakarta.ws.rs.BadRequestException;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
@@ -22,6 +23,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
 
 public class EntityService {
 
@@ -106,6 +108,7 @@ public class EntityService {
         return validTypes.contains(type);
     }
 
+    @Path("game")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Game> getGames(
@@ -169,11 +172,4 @@ public class EntityService {
         return em.find(Rent.class, id);
     }
 
-    //Retorna el alquiler si estas autenticado
-    public Rent findRentAutenticat(int id, boolean autenticat) {
-        if (autenticat) {
-            return em.find(Rent.class, id);
-        }
-        return null;
-    }
 }
